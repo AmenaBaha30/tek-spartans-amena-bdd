@@ -7,9 +7,9 @@ import java.time.Duration;
 
 public class BaseSetupPractice {
 
-    private  WebDriver driver;
+    private WebDriver driver;
 
-    public void setupBrowser(){
+    public void setupBrowser() {
 
         driver = new ChromeDriver();
         driver.get("https://tek-retail-ui.azurewebsites.net/");
@@ -17,12 +17,13 @@ public class BaseSetupPractice {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
     }
 
-    public void quitBrowser(){
-        if (driver == null ) {
+    public void quitBrowser() {
+        if (driver == null) {
             driver.quit();
         }
     }
-    public WebDriver getDriver (){
+
+    public WebDriver getDriver() {
         return driver;
 
     }
