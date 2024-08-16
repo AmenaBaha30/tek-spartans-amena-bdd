@@ -10,3 +10,4 @@ public class HomePage {
 
     public static final By ACCOUNT_LINK = By.id("accountLink");
 }
+
