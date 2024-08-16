@@ -1,34 +1,23 @@
 package tek.bdd.base;
-
-import io.cucumber.core.logging.Logger;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.edge.EdgeDriver;
-import org.openqa.selenium.edge.EdgeOptions;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.firefox.FirefoxOptions;
-import tek.bdd.browsers.BaseBrowser;
-import tek.bdd.browsers.ChromeBrowser;
-import tek.bdd.browsers.EdgeBrowser;
-import tek.bdd.browsers.FireFoxBrowser;
-
-import javax.swing.plaf.metal.MetalLookAndFeel;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.time.Duration;
 import java.util.Properties;
-import java.util.logging.LogManager;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.openqa.selenium.WebDriver;
+import tek.bdd.browsers.BaseBrowser;
+import tek.bdd.browsers.ChromeBrowser;
+import tek.bdd.browsers.EdgeBrowser;
+import tek.bdd.browsers.FireFoxBrowser;
 
 public abstract class BaseSetup {
     private static final Logger LOGGER = LogManager.getLogger(BaseSetup.class);
     //Encapsulating driver instance
     private static WebDriver driver;
     private final Properties properties;
-    
+
     //Find the full path to file
     //FileInputStream to read the file
     //Properties and load the FileInputStream to the properties
@@ -47,6 +36,7 @@ public abstract class BaseSetup {
             throw new RuntimeException("Something wrong with Config file", ex);
         }
     }
+
     public void setupBrowser() {
         //To Open Chrome browser in headless mode
         String browserType = properties.getProperty("ui.browser");
@@ -71,12 +61,14 @@ public abstract class BaseSetup {
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
     }
+
     public void quitBrowser() {
         //null check before quit
         if (driver != null) {
             driver.quit();
         }
     }
+
     //Giving read-only indirect access to driver.
     //restrict setting new driver instance
     public WebDriver getDriver() {

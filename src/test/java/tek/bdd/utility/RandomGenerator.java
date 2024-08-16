@@ -16,5 +16,4 @@ public class RandomGenerator {
         }
         return randomString.toString() + "@gmail.com";
     }
-
 }
